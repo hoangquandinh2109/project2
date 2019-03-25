@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Quản lý Danh Bạ</title>
+
+    <script src="resources/js/jquery-1.11.3.min.js"></script>
+    <script src="resources/js/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="resources/jquery-ui/jquery-ui.min.css" />
+
+</head>
+</head>
+<body>
+	<button class="btn btn-primary btnAdd" role="button">Thêm mới</button>
+	<div class="row">
+		<div class="col-sm-8">
+			<table class="table table-striped">
+		        <thead>
+		            <tr>
+		                <th>ID</th>
+		                <th>Title</th>
+		                <th>Price</th>
+		            </tr>
+		        </thead>
+		        <tbody id="listcosmetics">
+
+		        </tbody>
+		    </table>
+		</div>
+	    <div class="col-sm-4" id = "siteClassDetail"></div>
+	</div>
+	<div class="row" id="createCosmetic" style="display: none" >
+        <form class="form-horizontal" action="" method="POST" >
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">cosmetic_title:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cosmetic-title" name="cosmetic-title" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">category_id:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="category-id" name="category-id" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">cosmetic_price:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cosmetic-price" name="cosmetic-price" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">cosmetic_rate:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cosmetic-rate" name="cosmetic-rate" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">brand_id:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="brand-id" name="brand-id" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">cosmetic_picture:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cosmetic-picture" name="cosmetic-picture" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtname" class="col-sm-2 control-label">cosmetic_desciption:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="cosmetic-desciption" name="cosmetic-desciption" value="" required >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtcreatedate" class="col-sm-2 control-label">Create Date:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control datepicker" id="txtcreatedate" name="txtcreatedate" value="" required >
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <script id="templateDetailCosmetic" type="text/template">
+        <div class="form-horizontal" action="/action_page.php">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">ID:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" value="{{cosmetic_id}}" disabled="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">title:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" value="{{cosmetic_title}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" value="{{cosmetic_price}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">description</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" value="{{cosmetic_desciption}}">
+            </div>
+        </div>
+    </div>
+    </script>
+	<script>
+		$(document).ready(function () {
+			function addCosmetic() {
+		        var cosmetic = {
+		            cosmetic_title: $('#cosmetic-title').val(),
+		            category_id: $('#category-id').val(),
+		            cosmetic_price: $('#cosmetic-price').val(),
+		            cosmetic_rate: $('#cosmetic-rate').val(),
+		            brand_id: $('#brand-id').val(),
+		            cosmetic_picture: $('#cosmetic-picture').val(),
+		            cosmetic_desciption: $('#cosmetic-desciption').val()
+		        };
+		        console.log(JSON.stringify(cosmetic));
+		        $.ajax({
+		            dataType: "json",
+		            type: 'POST',
+		            data: JSON.stringify(cosmetic),
+		            contentType: "application/json",
+		            url: "api/cosmetic.php",
+		            success: function (data) {
+		            },
+		            error: function (data) {
+
+		            }
+		        });
+		    }
+			reloadCosmetic();
+		    function reloadCosmetic() {
+		        $.ajax({
+		            dataType: "json",
+		            type: 'GET',
+		            url: "api/cosmetic.php",
+		            contentType: "application/json",
+		            success: function (data) {
+		                console.log("aaaaaaaa");
+		                // console.log("data:" + data);
+		                $("#listcosmetics").empty();
+		                $.each(data, function (key, value) {
+		                    $("#listcosmetics").append("<tr>");
+		                    var listcosmetics = "";
+		                    listcosmetics = listcosmetics + "<td>" + value.cosmetic_id + "</td>";
+		                    listcosmetics = listcosmetics + "<td>" + value.cosmetic_title + "</td>";
+		                    listcosmetics = listcosmetics + "<td>" + value.cosmetic_price + "</td>";
+		                    listcosmetics = listcosmetics + '<td><button data-id="' + value.cosmetic_id + '" class="btn btn-warning btnDetail">\n\
+		                            Detail</button>|||<button class="btn btn-danger btnDelete" data-id="' + value.cosmetic_id + '">Delete</button></td>';
+		                    $("#listcosmetics").append(listcosmetics);
+		                    $("#listcosmetics").append("</tr>");
+		                });
+		                action();
+		            },
+		            error: function (data) {
+
+		            }
+		        });
+		    }
+		    function action() {
+		        $(".btnDetail").click(function () {
+		            
+		            var id = $(this).data("id");
+		            console.log("id:---" + id);
+		            $.ajax({
+		                dataType: "json",
+		                type: 'GET',
+		                url: "api/cosmetic.php?id=" + id,
+		                contentType: "application/json",
+		                success: function (data) {
+		                    var template = $("#templateDetailCosmetic").html();
+		                    var text = Mustache.render(template, data);
+
+		                    $("#siteClassDetail").html(text);
+		                    
+		                },
+		                error: function (data) {
+
+		                }
+		            });
+		        });
+		        $(".btnAdd").click(function () {
+		            $(".datepicker").datepicker({
+		                dateFormat: 'yy-mm-dd'
+		            });
+		            $("#createCosmetic").dialog({
+		                show: {
+		                    effect: "blind",
+		                    duration: 1000
+		                },
+		                height: 500,
+		                width: 750,
+		                modal: true,
+		                buttons: {
+		                    "Save": function () {
+		                        addCosmetic();
+		                        $("#createCosmetic").dialog("close");
+		                        reloadCosmetic();
+		                    },
+		                    Cancel: function () {
+		                        $("#createCosmetic").dialog("close");
+		                    }
+		                },
+		                hide: {
+		                    effect: "explode",
+		                    duration: 1000
+		                }
+		            });
+		        });
+		    }
+		});
+	</script>
+</body>
+</html>
