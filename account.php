@@ -1,6 +1,9 @@
 <?php
 include './php_check_acc/connect_sever.php';
 session_start();
+if(!isset($_SESSION['name'])){
+    header("location: .");
+}
 $pagename = 'Thông tin cá nhân';
 include 'templates/header.php';
 ?>

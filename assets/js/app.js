@@ -103,24 +103,6 @@ var ViewModel = function () {
                 $button.parent().find("input").val(newVal);
                 $button.parent().find("input").change();
             });
-            $('.input-quantity').on('keydown keyup', function(e){
-                if ($(this).val() < 0 
-                    && e.keyCode !== 46 // keycode for delete
-                    && e.keyCode !== 8 // keycode for backspace
-                   ) {
-                   e.preventDefault();
-                   $(this).val(0);
-                   $(this).change();
-                }
-                if ($(this).val() > 50 
-                    && e.keyCode !== 46 // keycode for delete
-                    && e.keyCode !== 8 // keycode for backspace
-                   ) {
-                   e.preventDefault();
-                   $(this).val(50);
-                   $(this).change();
-                }
-            });
             $('.plus-quantity').click(function(){
                 var $button = $(this);
                 var oldValue = $button.parent().find("input").val();
@@ -134,7 +116,7 @@ var ViewModel = function () {
                 
                 $button.parent().find("input").val(newVal);
                 $button.parent().find("input").change();
-            });
+            });s
         })
     }
     getAllCartItems();
@@ -220,7 +202,7 @@ var ViewModel = function () {
     }
     //end delete
 
-    var delay = 3000;
+    var delay = 500;
     $(".buy-product").click(function(){
         var id = $(this).parent().find(".cosmetic-id").text()*1;
         self.newcartitem.cosmetic_id(id);

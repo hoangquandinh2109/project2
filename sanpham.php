@@ -17,7 +17,7 @@ include 'templates/header.php'; ?>
 					<div class="product-item">
 						<span class="hot">Hot</span>
 						<a href="#" class="product-image">
-							<img src="image/<?=$cosmetic->cosmetic_picture?>" alt="">
+							<img src="http://beautymax.runtime.vn/Uploads/shop302/files/LamSach/ls6.png" alt="">
 						</a>
 						<div class="product-info">
 							<p class="product-title"><a href="#"><?=$cosmetic->cosmetic_title?></a></p>

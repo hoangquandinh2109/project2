@@ -14,7 +14,6 @@ include 'templates/header.php'; ?>
 						<p><a href="#"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></p>
 					</div>
 				</div>
-				<!-- sdkjfldskfjlk -->
 				<div class="main-login-content">
 					<h1 class="title-line"><span>Đăng ký tài khoản</span></h1>
 					<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 col-xs-offset-0 col-sm-offset-0">
