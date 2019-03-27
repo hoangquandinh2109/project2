@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿<?php
+=======
+<?php
+// comment lan  1
+// cm2
+>>>>>>> master
 include '../php_check_acc/connect_sever.php';
 include 'adminvip.php';
 //cm3
