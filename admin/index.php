@@ -1,6 +1,9 @@
 <?php 
 $pagename="Trang chủ - Admin";
 session_start();
+if (!isset($_SESSION['adminname'])) {
+    header("Location: login.php");
+}
 include 'templates/header.php'; ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">

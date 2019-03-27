@@ -96,7 +96,7 @@
 									<tr class="product-row-cart">
 										<td class="cart-product">
 											<a data-bind="click: $parent.deleteCartItem" class="btn-remove-cart-item" href="">x</a>
-											<img src="https://thegioirubik.com/wp-content/uploads/2016/09/Moyu-Aolong-Plus1-510x510.jpg" alt="">
+											<img data-bind="attr:{src:  'image/'+cosmetic.cosmetic_picture}" alt="">
 										</td>
 										<td class="cart-product-title">
 											<a data-bind="text: cosmetic.cosmetic_title" href="#">dien thoai iphone</a><span style="color: #ccc;"> x </span><span style="color: #ccc;" data-bind="text: quantity"></span><br><span data-bind="text: cosmetic.beauty_price">

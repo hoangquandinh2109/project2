@@ -31,6 +31,7 @@ include 'templates/header.php';
                       <th>Tên khách hàng</th>
                       <th>Tổng Tiền</th>
                       <th>Trạng thái</th>
+                      <th>Thành viên</th>
                       <th>Thao tác</th>
                     </tr>
                   </thead>
@@ -40,6 +41,7 @@ include 'templates/header.php';
                       <th>Tên khách hàng</th>
                       <th>Tổng Tiền</th>
                       <th>Trạng thái</th>
+                      <th>Thành viên</th>
                       <th>Thao tác</th>
                     </tr>
                   </tfoot>
@@ -59,12 +61,20 @@ include 'templates/header.php';
                           break;
                       }
                     }
+                    function ismember($id){
+                      if ($id == 0) {
+                        return "không";
+                      } else {
+                        return "có";
+                      }
+                    }
                     if (isset($orders)){ foreach ($orders as $order) {?>
                     <tr>
                       <td><a href="order-detail.php?id=<?=$order->orders_id?>"><?=$order->orders_id?></a></td>
                       <td><?=$order->orders_name?></td>
                       <td><?=$order->orders_price?></td>
                       <td><?=status($order->orders_status)?></td>
+                      <td><?=ismember($order->customer_id)?></td>
                       <td>
                         <a href="deleteorder.php?id=<?=$order->orders_id?>" class="btn btn-danger btn-circle btn-sm">
                           <i class="fas fa-trash"></i>

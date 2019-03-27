@@ -22,7 +22,7 @@ include 'templates/header.php'; ?>
 									<tr class="product-row-cart">
 										<td class="cart-product">
 											<a data-bind="click: $parent.deleteCartItem" class="btn-remove-cart-item" href="">x</a>
-											<img src="https://thegioirubik.com/wp-content/uploads/2016/09/Moyu-Aolong-Plus1-510x510.jpg" alt="">
+											<img data-bind="attr:{src:  'image/'+cosmetic.cosmetic_picture}" alt="">
 											<a class="title-product" data-bind="text: cosmetic.cosmetic_title" href="#"></a>
 										</td>
 										<td class="cart-price"><span data-bind="text: cosmetic.beauty_price"></span></td>
