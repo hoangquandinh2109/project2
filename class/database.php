@@ -48,6 +48,7 @@
 			$sql = "SELECT * FROM $table WHERE $column = $value";
 			$result = $this->conn->query($sql);
 			$i=1;
+			$objects = array();
 			while ($obj = $result->fetch_object()){
 				$objects[]= $obj;
 			}
