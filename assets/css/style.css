@@ -613,3 +613,24 @@ section.navigation nav>ul>.scroll-cart>a{
 .scroll-cart:hover .cartitems{
 	display: block!important;
 }
+#thongtinlienhetranglienhe{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#thongtinlienhetranglienhe li{
+	padding-left: 20px;
+	position: relative;
+}
+#thongtinlienhetranglienhe li i{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.hr{
+	border-bottom: 1px solid #94bae0;
+	width: 100%;
+	padding: 20px 0;
+
+}
