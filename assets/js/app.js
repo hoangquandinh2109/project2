@@ -202,7 +202,7 @@ var ViewModel = function () {
     }
     //end delete
 
-    var delay = 500;
+    var delay = 3000;
     $(".buy-product").click(function(){
         var id = $(this).parent().find(".cosmetic-id").text()*1;
         self.newcartitem.cosmetic_id(id);
