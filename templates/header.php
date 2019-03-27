@@ -88,7 +88,7 @@
 						<li><a <?=($pagename == 'Giới thiệu') ? 'class="active"' : '' ;?> href="gioithieu.php">Giới Thiệu</a></li>
 						<li><a <?=($pagename == 'Sản phẩm') ? 'class="active"' : '' ;?> href="sanpham.php">Sản Phẩm</a></li>
 						<li><a <?=($pagename == 'Tin tức') ? 'class="active"' : '' ;?> href="tintuc.php">Tin Tức</a></li>
-						<li><a <?=($pagename == 'Liên Hệ') ? 'class="active"' : '' ;?> href="lienhe.php">Liên Hệ</a></li>
+						<li><a <?=($pagename == 'Liên hệ') ? 'class="active"' : '' ;?> href="lienhe.php">Liên Hệ</a></li>
 						<li class="hidden scroll-cart">
 							<a href="cart.php"><i class="fas fa-shopping-cart"></i>Giỏ hàng <span data-bind="text: number"></span></a>
 							<div class="cartitems">
