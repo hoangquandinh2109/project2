@@ -70,8 +70,8 @@ include 'templates/header.php'; ?>
                                     <label class="col-sm-4 control-label">Giới tính</label>
                                     <div class="col-sm-8">
                                         <select class="form-control form-ctrl" name="gendertxt">
-                                            <option value="1" label="Nữ" selected="selected">Nữ</option>
-                                            <option value="0" label="Nam">Nam</option>
+                                            <option value="0" label="Nữ" selected="selected">Nữ</option>
+                                            <option value="1" label="Nam">Nam</option>
                                         </select>
                                     </div>
                                 </div>

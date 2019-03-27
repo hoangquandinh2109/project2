@@ -25,11 +25,11 @@
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Thêm admin mới</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Thêm nhân viên mới</h1>
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Thêm admin mới</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Thêm nhân viên mới</h6>
                             </div>
                             <div class="card-body">
                                 <form class="form-horizontal" action="../php_check_acc/check_admin.php" method="post" onsubmit="return check_add_admin()">
@@ -86,10 +86,10 @@
                                               <?php if ($_SESSION['adminname'] == $abkjlskjdlfkjlluser && $_SESSION['adminpass'] == $ksdjfldksjflsdkjpass) { ?>
                                                 <option value="0" label="Admin" selected="selected"></option><?php } ?>
                                                 <option value="1" label="Quản lí khách hàng" ></option>              
-                                                <option value="2" label="Quản lí đơn hàng" ></option>   
+                                                <option value="2" label="Quản lí phản hồi" ></option>        
                                                 <option value="3" label="Quản lí sản phẩm" ></option>  
                                                 <option value="4" label="Quản lí bình luận" ></option>     
-                                                <option value="5" label="Quản lí phản hồi" ></option>     
+                                                
                                             </select>
                                         </div>
                                     </div>
