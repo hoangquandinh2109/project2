@@ -22,8 +22,8 @@ if (isset($_POST['submit_add_customer'])) {
             exit;
         } else {
             $sqlsu = "insert into customer(CUSTOMER_USERNAME,CUSTOMER_PASSWORD,CUSTOMER_NAME, CUSTOMER_GENDER, 
-        CUSTOMER_EMAIL, CUSTOMER_PHONE, CUSTOMER_AVATAR, CUSTOMER_DOB,CUSTOMER_ADDRESS,CUSTOMER_LOYALTY)
-        values ('$account', '$pass', N'$name','$gender','$email','$phone','','$dob' ,N'$address','0')";
+        CUSTOMER_EMAIL, CUSTOMER_PHONE, CUSTOMER_DOB,CUSTOMER_ADDRESS,CUSTOMER_LOYALTY)
+        values ('$account', '$pass', N'$name','$gender','$email','$phone','$dob' ,N'$address','0')";
             if (mysqli_query($conn, $sqlsu)) {
                 session_start();
                 $_SESSION['name'] = $account;

@@ -1,8 +1,8 @@
 <?php 
 $pagename="Trang chủ - Admin";
 session_start();
-if (!isset($_SESSION['adminname'])) {
-    header("Location: login.php");
+if(!isset($_SESSION['adminname'])){
+    header("location:login.php");
 }
 include 'templates/header.php'; ?>
         <!-- Begin Page Content -->

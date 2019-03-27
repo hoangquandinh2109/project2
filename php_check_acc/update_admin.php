@@ -16,7 +16,7 @@ if (isset($_POST["update_detail_admin"])) {
 if (isset($_POST['submit_update_pass_admin'])) {
     $oldpass = $_POST["oldpasstxt"];
     $pass = $_POST["newpasstxt"];
-    $oripass= $_SESSION['pass'];
+    $oripass= $_SESSION['adminpass'];
     $sqli = "update admin set ADMIN_PASSWORD='$pass' where ADMIN_USERNAME='$account'";
     if ($oldpass == $oripass) {
         if (mysqli_query($conn, $sqli)) {

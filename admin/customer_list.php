@@ -80,15 +80,15 @@ include 'templates/header.php';
                                                     <td><?php echo$row[5] ?></td>
 
                                                     <td><?php echo$row[6] ?></td>
-                                                    <td><?php echo$row[9] ?></td>
+                                                    <td><?php echo$row[8] ?></td>
                                                     <td>                                              
                                                         <?php
-                                                        $check_loyalty="select ORDER_ID from orders where CUSTOMER_ID='$row[10]'";
-                                                        $update_loyalty="update customer set CUSTOMER_LOYALTY='1' WHERE CUSTOMER_ID='$row[10]'";
+                                                        $check_loyalty="select ORDERS_ID from orders where customer_id='$row[0]'";
+                                                        $update_loyalty="update customer set customer_loyalty='1' WHERE CUSTOMER_ID='$row[0]'";
                                                         if(mysqli_num_rows(mysqli_query($conn, $check_loyalty))>4){
                                                             mysqli_query($conn, $update_loyalty);
                                                         }
-                                                        if ($row[10] == 1) {
+                                                        if ($row[9] == 1) {
                                                             echo "Có";
                                                         } else {
                                                             echo"Không";
