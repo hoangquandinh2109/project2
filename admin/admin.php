@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<?php
+=======
+<?php
+>>>>>>> master
 include '../php_check_acc/connect_sever.php';
 include 'adminvip.php';
 session_start();
