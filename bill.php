@@ -6,7 +6,14 @@ $db = new Database();
 $cartItems = $_SESSION['cart'];
 $_SESSION['cart'] = array();	
 // var_dump($cartItems);
+if (isset($_SESSION['name'])) {
+	$username = $_SESSION['name'];
+	$cus = $db->findOne('CUSTOMER','CUSTOMER_USERNAME',"'$username'");
+	$cus_id = $cus->CUSTOMER_ID;
+
+}
 if (isset($_POST['payment-submit'])) {
+	$cusid = (isset($cus_id)?$cus_id:0);
 	$address = $_POST['address'];
 	$name = $_POST['fullname'];
 	$phone = $_POST['phone'];
@@ -14,7 +21,7 @@ if (isset($_POST['payment-submit'])) {
 	$pm = $_POST['pm'];
 	$email = $_POST['email'];
 	$description = $_POST['description'];
-	$db->executeQuery("INSERT INTO `orders` (`customer_id`, `orders_address`, `orders_name`, `orders_phone`, `orders_status`, `orders_price`, `orders_method`, `orders_email`, `orders_description`) VALUES ('1', '$address', '$name', '$phone', '1', '$total', '$pm', '$email', '$description')");
+	$db->executeQuery("INSERT INTO `orders` (`customer_id`, `orders_address`, `orders_name`, `orders_phone`, `orders_status`, `orders_price`, `orders_method`, `orders_email`, `orders_description`) VALUES ('$cusid', '$address', '$name', '$phone', '1', '$total', '$pm', '$email', '$description')");
 	
 	$thisOrderID = $db->getNewestOrdersID();
 	foreach ($cartItems as $item) {

@@ -30,7 +30,7 @@
 				<div class="function">
 					<ul>
 						<?php if (isset($_SESSION['name'])){ ?>
-						<li><a href="#"><i class="fas fa-user"></i><?=$_SESSION['name']?></a></li>
+						<li><a href="account.php"><i class="fas fa-user"></i><?=$_SESSION['name']?></a></li>
 						<li><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></li>
 						<?php } else{?>
 						<!-- <li><a href="#"><i class="far fa-edit"></i>Kiểm tra đơn hàng</a></li> -->

@@ -11,10 +11,10 @@ include 'templates/header.php';
             <div class="side-bar">
                 <h1 class="title-line"><span>Tài Khoản</span></h1>
                 <div>
-                    <p><a href="#"><i class="fas fa-user"></i>Thông tin cá nhân</a></p>
-                    <p><a href="#"><i class="far fa-list-alt"></i>Đơn hàng của tôi</a></p>
-                    <p><a href="#"><i class="fas fa-key"></i>Thay đổi mật khẩu</a></p>
-                    <p><a href="#"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></p>
+                    <p><a href="account.php"><i class="fas fa-user"></i>Thông tin cá nhân</a></p>
+                    <p><a href="myorders.php"><i class="far fa-list-alt"></i>Đơn hàng của tôi</a></p>
+                    <p><a href="doimatkhau.php"><i class="fas fa-key"></i>Thay đổi mật khẩu</a></p>
+                    <p><a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a></p>
                 </div>
             </div>
             <div class="main-login-content">
