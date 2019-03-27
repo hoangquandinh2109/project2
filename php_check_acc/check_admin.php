@@ -24,9 +24,6 @@ if (isset($_POST['submit_add_admin'])) {
         ADMIN_EMAIL, ADMIN_PHONE, ADMIN_ADDRESS,ADMIN_ROLE)
         values ('$account', '$pass', N'$name','$email','$phone',N'$address','$role')";
     if (mysqli_query($conn, $sqlsu)) {
-        session_start();
-        $_SESSION['adminname'] = $account;
-        $_SESSION['adminpass'] = $pass;
         echo'<script>alert("Thêm thành công");window.location="../admin/themadmin.php"</script>';
     }
 }
