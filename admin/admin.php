@@ -1,5 +1,6 @@
 <?php
 // comment lan  1
+// cm2
 include '../php_check_acc/connect_sever.php';
 include 'adminvip.php';
 session_start();
