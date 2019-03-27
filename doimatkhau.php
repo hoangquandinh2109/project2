@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['name'])) {
+    header("Location: .");
+}
 $pagename = 'Đổi mật khẩu';
 include 'templates/header.php';
 ?>

@@ -9,8 +9,8 @@
             $adminname = $_SESSION['adminname'];
             $abc = $db->getAllWhere('admin','admin_username',"'$adminname'");
             $admin = $abc[0];
-            if ($admin->ADMIN_ROLE != 1) {
-                header("Location: login.php");
+            if ($admin->ADMIN_ROLE != 0) {
+                header("Location: index.php");
             }
         } 
     }else{
@@ -80,11 +80,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label " for="product">Role:</label>
+                                        <label class="control-label " for="product">Chức vụ:</label>
                                         <div class="">
                                             <select class="form-control form-ctrl" name="roletxt">
-                                                <option value="0" label="Modifier" selected="selected"></option>
-                                                <option value="1" label="Admin"></option>
+                                              <?php if ($_SESSION['adminname'] == $abkjlskjdlfkjlluser && $_SESSION['adminpass'] == $ksdjfldksjflsdkjpass) { ?>
+                                                <option value="0" label="Admin" selected="selected"></option><?php } ?>
+                                                <option value="1" label="Quản lí khách hàng" ></option>              
+                                                <option value="2" label="Quản lí đơn hàng" ></option>   
+                                                <option value="3" label="Quản lí sản phẩm" ></option>  
+                                                <option value="4" label="Quản lí bình luận" ></option>     
+                                                <option value="5" label="Quản lí phản hồi" ></option>     
                                             </select>
                                         </div>
                                     </div>

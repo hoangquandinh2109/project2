@@ -1,9 +1,24 @@
 <?php
 include '../php_check_acc/connect_sever.php';
+include 'adminvip.php';
 session_start();
-if (!isset($_SESSION['adminname'])) {
-    header("Location: login.php");
-}
+require_once '../class/database.php';
+    $db = new Database();
+    if (isset($_SESSION['adminname'])) {
+        if ($_SESSION['adminname'] != $abkjlskjdlfkjlluser && $_SESSION['adminpass'] != $ksdjfldksjflsdkjpass) {
+            $adminname = $_SESSION['adminname'];
+            $abc = $db->getAllWhere('admin','admin_username',"'$adminname'");
+            $admin = $abc[0];
+            if ($admin->ADMIN_ROLE == 0 || $admin->ADMIN_ROLE == 1) {
+               
+            }else{
+                 header("Location: index.php");
+            }
+        } 
+    }else{
+        header("Location: index.php");
+        
+    }
 $pagename='Danh sách khách hàng';
 include 'templates/header.php';
 ?>
@@ -66,7 +81,13 @@ include 'templates/header.php';
 
                                                     <td><?php echo$row[6] ?></td>
                                                     <td><?php echo$row[9] ?></td>
-                                                    <td><?php
+                                                    <td>                                              
+                                                        <?php
+                                                        $check_loyalty="select ORDER_ID from orders where CUSTOMER_ID='$row[10]'";
+                                                        $update_loyalty="update customer set CUSTOMER_LOYALTY='1' WHERE CUSTOMER_ID='$row[10]'";
+                                                        if(mysqli_num_rows(mysqli_query($conn, $check_loyalty))>4){
+                                                            mysqli_query($conn, $update_loyalty);
+                                                        }
                                                         if ($row[10] == 1) {
                                                             echo "Có";
                                                         } else {
@@ -76,11 +97,7 @@ include 'templates/header.php';
                                                     <td>
                                                         <a href ="../php_check_acc/delete_cus.php?id=<?php echo $row[0] ?> " class = "btn btn-danger btn-circle btn-sm">
                                                             <i class = "fas fa-trash"></i>
-                                                        </a>
-                                                        <a href="../admin/update_cus_loyalty.php?id=<?php echo $row[0] ?>" class="btn btn-info btn-circle btn-sm">
-                                                            <i class="fas fa-pen"></i>
-                                                        </a>
-
+                                                        </a>                                                        
                                                     </td>
                                                 </tr>
                                             <?php } ?>

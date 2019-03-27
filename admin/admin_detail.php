@@ -4,19 +4,11 @@ session_start();
 require_once '../class/database.php';
 include 'adminvip.php';
     $db = new Database();
-    if (isset($_SESSION['adminname'])) {
-        if ($_SESSION['adminname'] != $abkjlskjdlfkjlluser && $_SESSION['adminpass'] != $ksdjfldksjflsdkjpass) {
-            $adminname = $_SESSION['adminname'];
-            $abc = $db->getAllWhere('admin','admin_username',"'$adminname'");
-            $admin = $abc[0];
-            if ($admin->ADMIN_ROLE != 1) {
-                header("Location: login.php");
-            }
-        } 
-    }else{
+    if (!isset($_SESSION['adminname'])){
         header("Location: login.php");
         
     }
+    $pagename="Thông tin tài khoản";
 include 'templates/header.php';
 ?>
 
@@ -32,7 +24,7 @@ include 'templates/header.php';
                             </div>
                             <div class="card-body">
                                 <?php
-                                $sqli = "select * from admin where ADMIN_USERNAME='" . $_SESSION['name'] . "'";
+                                $sqli = "select * from admin where ADMIN_USERNAME='" . $_SESSION['adminname'] . "'";
                                 $result = mysqli_fetch_array(mysqli_query($conn, $sqli));
                                 ?>
                                 <form class="form-horizontal" action="../php_check_acc/update_admin.php"  method="post" onsubmit="return check_update_admin()">
@@ -63,7 +55,19 @@ include 'templates/header.php';
                                                    pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" disabled="" value="<?php echo $result["ADMIN_EMAIL"] ?>"
                                                    title="email phải đúng định dạng xxxx@xxxx.xxx">
                                         </div>
-                                    </div>                             
+                                    </div>      
+                                    <div class="form-group">
+                                        <label class="control-label " for="product">Chức vụ: <span id="address-admin-erro" style="color: red"></span></label>
+                                        <div class="">
+                                            <input type="text" name="roletxt" class="form-control" id="address-admin" placeholder="" disabled=""
+                                                   value="<?php if($result["ADMIN_ROLE"]==0){echo "Admin" ;}
+                                                   if($result["ADMIN_ROLE"]==1){echo "Quản lí khách hàng" ;}
+                                                   if($result["ADMIN_ROLE"]==2){echo "Quản lí đơn hàng" ;}
+                                                   if($result["ADMIN_ROLE"]==3){echo "Quản lí sản phẩm" ;}
+                                                   if($result["ADMIN_ROLE"]==4){echo "Quản lí bình luận" ;}
+                                                   if($result["ADMIN_ROLE"]==5){echo "Quản lí phản hồi" ;}?>">
+                                        </div>
+                                    </div>
                                     <div class="form-group"> 
                                         <button type="submit" name="update_detail_admin" class="btn btn-primary btn-icon-split">
                                             <span class="icon text-white-50">

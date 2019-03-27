@@ -4,6 +4,7 @@
     if (!isset($_SESSION['adminname'])) {
     header("Location: login.php");
 }
+$pagename="Đổi mật khẩu";
 include 'templates/header.php';
 ?>
 
